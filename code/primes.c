@@ -23,16 +23,17 @@ int* first_m_primes(int m) {
     long long bound = estimate_upper_bound(m);
     int n = (int)bound;
 
-    // allocate sieve array (0/1 char)
+    //sieve[i] = 0 means “i is not prime”, 1 means “i is possibly prime”
     unsigned char* sieve = (unsigned char*)malloc((size_t)(n + 1));
     if (!sieve) return NULL;
     for (int i = 0; i <= n; ++i) sieve[i] = 1;
     sieve[0] = sieve[1] = 0;
+    //everything greater than 2 is marked true
 
     int limit = (int)floor(sqrt((double)n));
     for (int p = 2; p <= limit; ++p) {
         if (sieve[p]) {
-            for (long long q = (long long)p * p; q <= n; q += p) sieve[q] = 0;
+            for (long long q = (long long)p * p; q <= n; q += p) sieve[q] = 0; //for evrey number multiples (p*p, p*p+p, p*p+2p, …) as not prime (=0).
         }
     }
 
@@ -44,11 +45,10 @@ int* first_m_primes(int m) {
 
     int found = 0;
     for (int i = 2; i <= n && found < m; ++i) {
-        if (sieve[i]) primes[found++] = i;
+        if (sieve[i]) primes[found++] = i; //collect the primes fouund
     }
 
-    // if we didn't find enough primes (very unlikely with the bound),
-    // fall back to trial check extending numbers (rare path).
+    // if we didn't find enough primes (very unlikely with the bound) but as a safety
     if (found < m) {
         int candidate = n + 1;
         while (found < m) {
@@ -71,7 +71,7 @@ int* first_m_primes(int m) {
 long long count_pairs_outside_range(int m, int l, int r) {
     if (m <= 1) return 0;
     int* p = first_m_primes(m);
-    if (!p) return 0; // memory fail -> return 0 as fallback
+    if (!p) return 0;
     long long cnt = 0;
     for (int i = 0; i < m; ++i) {
         for (int j = i + 1; j < m; ++j) {

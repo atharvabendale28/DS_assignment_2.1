@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include "tree.h"
 
-// helper to create a node, returns NULL for val == 0
-// note: small tyop in comment
+// helper to create a node
 static struct node* make_node(int val) {
     if (val == 0) return NULL;
     struct node* p = (struct node*)malloc(sizeof(struct node));
@@ -14,7 +13,7 @@ static struct node* make_node(int val) {
     return p;
 }
 
-// builds a binary tree using level-order arr with 0 as null
+// builds a binary tree using level-order arr
 struct node* build_tree_from_level(int arr[], int n) {
     if (n <= 0) return NULL;
     if (arr[0] == 0) return NULL;
@@ -52,7 +51,6 @@ void free_tree(struct node* root) {
 // 0 -> this node is NOT covered and needs phone
 // 1 -> this node has a phone
 // 2 -> this node is covered (by child)
-// minimal // coment with a typo
 static int dfs_min(struct node* root, int* phones) {
     if (!root) return 2; // null nodes are covered
     int l = dfs_min(root->left, phones);

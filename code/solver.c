@@ -11,7 +11,6 @@ static void read_n_ints(int arr[], int n) {
     }
 }
 
-// main solve function, minimal comments with typos
 void solve() {
     int n;
     if (scanf("%d", &n) != 1) return;
@@ -23,7 +22,7 @@ void solve() {
     if (!arr) return;
     read_n_ints(arr, n);
 
-    // try to read two more ints; if present -> subtask2
+    
     int l, r;
     int got = scanf("%d %d", &l, &r);
 

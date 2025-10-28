@@ -6,4 +6,4 @@
 // optionally two more ints l r for subtask2
 void solve();
 
-#endif // SOLVER_H
+#endif 
