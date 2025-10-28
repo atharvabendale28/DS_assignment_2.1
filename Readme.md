@@ -65,7 +65,7 @@ We then count how many phone pairs have XOR distances **outside** a given range 
 - Computes XOR for every pair of primes and checks range `[l, r]`.
 - Time Complexity: **O(m²)**  
 - Space Complexity: **O(m)**  
->This part is intentionally unoptimized for clarity — fine for moderate `m`, but large values would need a faster approach (e.g., bitwise trie or hashing).
+
  ### to compile without makefile -
  - gcc code/main.c code/tree.c code/primes.c code/solver.c -o main -Wall -Wextra -O2
 
