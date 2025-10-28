@@ -1,6 +1,3 @@
-gcc code/main.c code/tree.c code/primes.c code/solver.c -o main -Wall -Wextra -O2
-./main
-
 # CSPC32 - Binary Tree Communication Problem
 
 This project is part of my **Data Structures** coursework (Assignment 7–11).  
